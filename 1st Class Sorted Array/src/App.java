@@ -1,20 +1,22 @@
 public class App {
-    public static void main(String[] args) throws Exception {
-        System.out.println("Hello, World!");
+    public static void main(String[] args) {
 
-        int arr[]={1,2,4,0};
+        int arr[] = {0, 2, 1, 5};   
+        // SELECTION SORT OBJECT ;
+        // SelectionSort ObjSc=new SelectionSort(arr);
+        // Bubble SORT OBJECT ;
+        BubbleSort ObjBs=new BubbleSort(arr);
 
-        int smallestNum=arr[0];
 
-        for(int i=0;i<arr.length;i++){
-            if(arr[i]<smallestNum){
-                smallestNum=arr[i];
-                // Collections.swap(arr, 0, 4);
-            }
+
+
+        // PRINTED SORTED ARRAY ;
+
+        System.out.print("Sorted Array: ");
+        for (int num : arr) {
+            System.out.print(num + " ");
         }
-
-        System.out.println(smallestNum);
-
-
     }
+
+    
 }
