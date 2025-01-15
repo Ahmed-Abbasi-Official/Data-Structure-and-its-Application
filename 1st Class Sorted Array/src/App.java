@@ -3,9 +3,11 @@ public class App {
 
         int arr[] = {4,1,5,2,3};   
         // SELECTION SORT OBJECT ;
-        // SelectionSort ObjSc=new SelectionSort(arr);
+        SelectionSort ObjSc=new SelectionSort(arr);
         // Bubble SORT OBJECT ;
-        BubbleSort ObjBs=new BubbleSort(arr);
+        // BubbleSort ObjBs=new BubbleSort(arr);
+        // INSERTION SORT OBJECT ;
+        InsertionSort ObjBs=new InsertionSort(arr);
 
 
 
