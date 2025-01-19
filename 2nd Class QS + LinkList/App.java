@@ -1,7 +1,18 @@
 import java.util.ArrayList;
-
 public class App {
+    
     public static void main(String[] args) {
+
+
+
+
+
+
+
+
+
+
+
         int num = 4;
 
         // Quick Sorting
@@ -17,6 +28,8 @@ public class App {
         QuickSort(arr, 0, arr.size() - 1);
         System.out.println("After sorting: " + arr);
     }
+
+    // QUICK SORT
 
     public static void QuickSort(ArrayList<Integer> arr, int start, int end) {
         if (start < end) {
