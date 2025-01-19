@@ -58,6 +58,7 @@ class List{
         }
     }
 
+    // PRINT ALL
     void printLL(){
         Node* temp = head;
         
@@ -65,9 +66,7 @@ class List{
         while(temp != NULL){
             cout<<" "<<temp->data<<" ";
             temp= temp->nextPtr;
-            cout<<"Head :"<<temp<<" "<<"tail :"<<tail;
         }
-        cout<<temp;
         cout<<endl;
     }
 
@@ -84,7 +83,23 @@ class List{
             tail=newNode;
         }
     }
+
+    // PUSH BACK UPDATE
+
+    void push_back_update(int val ,int post){
+        Node* newNode = new Node(val);
+        Node* temp =head;
+        int curr_post=0;
+        while(curr_post != post-1){
+            temp=temp->nextPtr;
+            curr_post++;
+        }
+        newNode->nextPtr=temp->nextPtr;
+        temp->nextPtr=newNode;
+    }
 };
+
+
 
 int main(){
     List ll;
@@ -97,6 +112,8 @@ int main(){
     ll.push_back(2);
     ll.push_back(3);
     // ll.pop_front();
+
+    ll.push_back_update(4,1);
 
     ll.printLL();
     return 0 ;
