@@ -21,6 +21,32 @@ class List{
         head=tail=NULL;
     }
 
+    // POP FRONT
+
+    void pop_front(){
+        Node* temp = head ;
+        head=head->nextPtr;
+        temp->nextPtr=NULL;
+
+        delete temp ;
+    }
+
+    // POP BACK
+
+    void pop_back(){
+        Node* temp = head ;
+
+        while(temp->nextPtr != tail){
+            temp=temp->nextPtr;
+        }
+
+        temp->nextPtr=NULL;
+        delete tail;
+        tail=temp;
+    }
+
+    // PUSH FRONT
+
     void push_front(int val){
         Node* newNode=new Node(val);
         if(head == NULL){
@@ -34,21 +60,43 @@ class List{
 
     void printLL(){
         Node* temp = head;
+        
 
         while(temp != NULL){
-            cout<<temp->data<<" ";
+            cout<<" "<<temp->data<<" ";
             temp= temp->nextPtr;
+            cout<<"Head :"<<temp<<" "<<"tail :"<<tail;
         }
+        cout<<temp;
         cout<<endl;
+    }
+
+    // PUSH BACK
+
+    void push_back(int val){
+        Node* newNode=new Node(val);
+        if(head==NULL){
+            head = tail = newNode;
+            // newNode->nextPtr=head;
+            return;
+        }else{
+            tail->nextPtr=newNode;
+            tail=newNode;
+        }
     }
 };
 
 int main(){
     List ll;
 
-    ll.push_front(1);
-    ll.push_front(2);
-    ll.push_front(3);
+    // ll.push_front(1);
+    // ll.push_front(2);
+    // ll.push_front(3);
+
+    ll.push_back(1);
+    ll.push_back(2);
+    ll.push_back(3);
+    // ll.pop_front();
 
     ll.printLL();
     return 0 ;
