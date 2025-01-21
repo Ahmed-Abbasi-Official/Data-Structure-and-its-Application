@@ -31,20 +31,6 @@ class List{
         delete temp ;
     }
 
-    // POP BACK
-
-    void pop_back(){
-        Node* temp = head ;
-
-        while(temp->nextPtr != tail){
-            temp=temp->nextPtr;
-        }
-
-        temp->nextPtr=NULL;
-        delete tail;
-        tail=temp;
-    }
-
     // PUSH FRONT
 
     void push_front(int val){
@@ -59,6 +45,7 @@ class List{
     }
 
     // PRINT ALL
+    
     void printLL(){
         Node* temp = head;
         
@@ -84,9 +71,23 @@ class List{
         }
     }
 
-    // PUSH BACK UPDATE
+      // POP BACK
 
-    void push_back_update(int val ,int post){
+    void pop_back(){
+        Node* temp = head ;
+
+        while(temp->nextPtr != tail){
+            temp=temp->nextPtr;
+        }
+
+        temp->nextPtr=NULL;
+        delete tail;
+        tail=temp;
+    }
+
+    // PUSH BACK ADDING NEW AT ANY RANDOM POSTION
+
+    void push_back_add_random_post(int val ,int post){
         Node* newNode = new Node(val);
         Node* temp =head;
         int curr_post=0;
@@ -97,6 +98,21 @@ class List{
         newNode->nextPtr=temp->nextPtr;
         temp->nextPtr=newNode;
     }
+
+    // PUSH BACK UPDATE
+
+    void push_back_update(int val , int post){
+        int curr_post = 0 ;
+        Node* newNode = new Node(val) ;
+        Node* temp = head ;
+        while(curr_post != post-1){
+            temp = temp->nextPtr ; 
+            curr_post++ ;
+        }
+
+        temp->data=val;
+    }
+
 };
 
 
@@ -113,7 +129,8 @@ int main(){
     ll.push_back(3);
     // ll.pop_front();
 
-    ll.push_back_update(4,1);
+    // ll.push_back_add_random_post(4,1);
+    ll.push_back_update(4,3);
 
     ll.printLL();
     return 0 ;
