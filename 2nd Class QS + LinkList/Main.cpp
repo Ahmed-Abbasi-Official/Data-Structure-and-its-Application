@@ -113,6 +113,20 @@ class List{
         temp->data=val;
     }
 
+    // SEARCH
+
+    int search(int val){
+        Node* temp = head ;
+        int idx=0;
+        while(temp!=NULL){
+            if(temp->data==val){
+                return idx + 1;
+            }
+            temp=temp->nextPtr ;
+            idx++;
+        }
+        return -1;
+    }
 };
 
 
@@ -130,8 +144,10 @@ int main(){
     // ll.pop_front();
 
     // ll.push_back_add_random_post(4,1);
-    ll.push_back_update(4,3);
-
+    // ll.push_back_update(4,3);
+    // ll.pop_back();
     ll.printLL();
+    cout<<ll.search(2)<<endl;
+
     return 0 ;
 }
