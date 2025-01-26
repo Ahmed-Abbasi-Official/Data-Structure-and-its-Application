@@ -21,6 +21,8 @@ class List{
         head=tail=NULL;
     }
 
+    
+
     // POP FRONT
 
     void pop_front(){
@@ -127,7 +129,26 @@ class List{
         }
         return -1;
     }
+
+   // DELETE EVERY ALTERNATE ELEMENT FORM LIST STARTING SECOND LAST ELEMENT
+
+void deleteAlternateNodes(){
+    Node* curr_node=head;
+    while (curr_node!=NULL && curr_node->nextPtr!=NULL)
+    {
+        /* code */
+        Node* temp = curr_node->nextPtr;
+        curr_node->nextPtr = curr_node->nextPtr->nextPtr;
+        delete temp;
+        curr_node = curr_node->nextPtr;
+    }
+    
+}
+ 
+
 };
+
+
 
 
 
@@ -141,13 +162,16 @@ int main(){
     ll.push_back(1);
     ll.push_back(2);
     ll.push_back(3);
+    ll.push_back(4);
+    ll.push_back(5);
     // ll.pop_front();
 
     // ll.push_back_add_random_post(4,1);
     // ll.push_back_update(4,3);
     // ll.pop_back();
+    // cout<<ll.search(2)<<endl;
+    ll.deleteAlternateNodes();
     ll.printLL();
-    cout<<ll.search(2)<<endl;
 
     return 0 ;
 }
