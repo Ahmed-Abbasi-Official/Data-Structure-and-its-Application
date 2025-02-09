@@ -1,158 +1,193 @@
 #include <iostream>
 using namespace std;
 
-class Node {
+class Node
+{
 public:
     int data;
-    Node* nextPtr;
+    Node *nextPtr;
 
     // Constructor to initialize the node
-    Node(int val) {
+    Node(int val)
+    {
         data = val;
         nextPtr = NULL;
     }
 };
 
-class List{
-    Node* head;
-    Node* tail;
-    public :
-    List(){
-        head=tail=NULL;
+class List
+{
+    Node *head;
+    Node *tail;
+
+public:
+    List()
+    {
+        head = tail = NULL;
     }
 
-    
+    // * POP FRONT
 
-    // POP FRONT
+    void pop_front()
+    {
+        Node *temp = head;
+        head = head->nextPtr;
+        temp->nextPtr = NULL;
 
-    void pop_front(){
-        Node* temp = head ;
-        head=head->nextPtr;
-        temp->nextPtr=NULL;
-
-        delete temp ;
+        delete temp;
     }
 
-    // PUSH FRONT
+    // * PUSH FRONT
 
-    void push_front(int val){
-        Node* newNode=new Node(val);
-        if(head == NULL){
+    void push_front(int val)
+    {
+        Node *newNode = new Node(val);
+        if (head == NULL)
+        {
             head = tail = newNode;
             return;
-        }else{
+        }
+        else
+        {
             newNode->nextPtr = head;
             head = newNode;
         }
     }
 
-    // PRINT ALL
-    
-    void printLL(){
-        Node* temp = head;
-        
+    // * PRINT ALL
 
-        while(temp != NULL){
-            cout<<" "<<temp->data<<" ";
-            temp= temp->nextPtr;
+    void printLL()
+    {
+        Node *temp = head;
+
+        while (temp != NULL)
+        {
+            cout << " " << temp->data << " ";
+            temp = temp->nextPtr;
         }
-        cout<<endl;
+        cout << endl;
     }
 
-    // PUSH BACK
+    // * PUSH BACK
 
-    void push_back(int val){
-        Node* newNode=new Node(val);
-        if(head==NULL){
+    void push_back(int val)
+    {
+        Node *newNode = new Node(val);
+        if (head == NULL)
+        {
             head = tail = newNode;
             // newNode->nextPtr=head;
             return;
-        }else{
-            tail->nextPtr=newNode;
-            tail=newNode;
+        }
+        else
+        {
+            tail->nextPtr = newNode;
+            tail = newNode;
         }
     }
 
-      // POP BACK
+    // * POP BACK
 
-    void pop_back(){
-        Node* temp = head ;
+    void pop_back()
+    {
+        Node *temp = head;
 
-        while(temp->nextPtr != tail){
-            temp=temp->nextPtr;
+        while (temp->nextPtr != tail)
+        {
+            temp = temp->nextPtr;
         }
 
-        temp->nextPtr=NULL;
+        temp->nextPtr = NULL;
         delete tail;
-        tail=temp;
+        tail = temp;
     }
 
-    // PUSH BACK ADDING NEW AT ANY RANDOM POSTION
+    // * PUSH BACK ADDING NEW AT ANY RANDOM POSTION
 
-    void push_back_add_random_post(int val ,int post){
-        Node* newNode = new Node(val);
-        Node* temp =head;
-        int curr_post=0;
-        while(curr_post != post-1){
-            temp=temp->nextPtr;
+    void push_back_add_random_post(int val, int post)
+    {
+        Node *newNode = new Node(val);
+        Node *temp = head;
+        int curr_post = 0;
+        while (curr_post != post - 1)
+        {
+            temp = temp->nextPtr;
             curr_post++;
         }
-        newNode->nextPtr=temp->nextPtr;
-        temp->nextPtr=newNode;
+        newNode->nextPtr = temp->nextPtr;
+        temp->nextPtr = newNode;
     }
 
-    // PUSH BACK UPDATE
+    // * PUSH BACK UPDATE
 
-    void push_back_update(int val , int post){
-        int curr_post = 0 ;
-        Node* newNode = new Node(val) ;
-        Node* temp = head ;
-        while(curr_post != post-1){
-            temp = temp->nextPtr ; 
-            curr_post++ ;
+    void push_back_update(int val, int post)
+    {
+        int curr_post = 0;
+        Node *newNode = new Node(val);
+        Node *temp = head;
+        while (curr_post != post - 1)
+        {
+            temp = temp->nextPtr;
+            curr_post++;
         }
 
-        temp->data=val;
+        temp->data = val;
     }
 
-    // SEARCH
+    // * SEARCH
 
-    int search(int val){
-        Node* temp = head ;
-        int idx=0;
-        while(temp!=NULL){
-            if(temp->data==val){
+    int search(int val)
+    {
+        Node *temp = head;
+        int idx = 0;
+        while (temp != NULL)
+        {
+            if (temp->data == val)
+            {
                 return idx + 1;
             }
-            temp=temp->nextPtr ;
+            temp = temp->nextPtr;
             idx++;
         }
         return -1;
     }
 
-   // DELETE EVERY ALTERNATE ELEMENT FORM LIST STARTING SECOND LAST ELEMENT
+    // * DELETE EVERY ALTERNATE ELEMENT FORM LIST STARTING SECOND LAST ELEMENT
 
-void deleteAlternateNodes(){
-    Node* curr_node=head;
-    while (curr_node!=NULL && curr_node->nextPtr!=NULL)
+    void deleteAlternateNodes()
     {
-        /* code */
-        Node* temp = curr_node->nextPtr;
-        curr_node->nextPtr = curr_node->nextPtr->nextPtr;
-        delete temp;
-        curr_node = curr_node->nextPtr;
+        Node *curr_node = head;
+        while (curr_node != NULL && curr_node->nextPtr != NULL)
+        {
+            /* code */
+            Node *temp = curr_node->nextPtr;
+            curr_node->nextPtr = curr_node->nextPtr->nextPtr;
+            delete temp;
+            curr_node = curr_node->nextPtr;
+        }
     }
-    
-}
- 
 
+    // * REVERSE LINKED LIST
+
+    void reverseLinkList()
+    {
+        Node *currNode = head;
+        Node *prev = NULL;
+        Node *next = NULL;
+
+        while (currNode != NULL)
+        {
+            next = currNode->nextPtr;
+            currNode->nextPtr = prev;
+            prev = currNode;
+            currNode = next;
+        }
+        head = prev;
+    }
 };
 
-
-
-
-
-int main(){
+int main()
+{
     List ll;
 
     // ll.push_front(1);
@@ -170,8 +205,10 @@ int main(){
     // ll.push_back_update(4,3);
     // ll.pop_back();
     // cout<<ll.search(2)<<endl;
-    ll.deleteAlternateNodes();
+    //  ll.deleteAlternateNodes();
+    ll.reverseLinkList();
+
     ll.printLL();
 
-    return 0 ;
+    return 0;
 }
