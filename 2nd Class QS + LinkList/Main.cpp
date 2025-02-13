@@ -184,6 +184,20 @@ public:
         }
         head = prev;
     }
+
+    // * FIND MIDDLE OF LINKED LIST
+
+    void middelofList(){
+        // BY FAST AND SLOW APPROACH
+        Node* slow = head;
+        Node* fast = head;
+
+        while(fast !=NULL && fast->nextPtr != NULL){
+            slow=slow->nextPtr;
+            fast=fast->nextPtr->nextPtr;
+        }
+        cout<<"Middle value is : "<<slow->data;
+    }
 };
 
 int main()
@@ -191,14 +205,18 @@ int main()
     List ll;
 
     // ll.push_front(1);
-    // ll.push_front(2);
+    // ll.push_front(2);   
     // ll.push_front(3);
+    // ll.push_front(4);
+    // ll.push_front(5);
+    // ll.push_front(6);
 
     ll.push_back(1);
     ll.push_back(2);
     ll.push_back(3);
     ll.push_back(4);
     ll.push_back(5);
+    ll.push_back(6);
     // ll.pop_front();
 
     // ll.push_back_add_random_post(4,1);
@@ -206,9 +224,10 @@ int main()
     // ll.pop_back();
     // cout<<ll.search(2)<<endl;
     //  ll.deleteAlternateNodes();
-    ll.reverseLinkList();
+    // ll.reverseLinkList();
+    ll.middelofList();
 
-    ll.printLL();
+    // ll.printLL();
 
     return 0;
 }
