@@ -198,6 +198,51 @@ public:
         }
         cout<<"Middle value is : "<<slow->data;
     }
+
+    // * DETECT LOOP IN LIST
+
+    bool detectLoopInList(){
+        Node* slow = head;
+        Node* fast = head;
+        while(fast!=NULL && fast->nextPtr !=NULL){
+            if(fast=slow){
+                return true;
+                break;
+            }
+            slow = slow->nextPtr;
+            fast=fast->nextPtr->nextPtr;
+        }
+        return false;
+    }
+
+    // * DETECT AND DELETE LOOP
+
+    Node* detectAndDeleteCyle(){
+        Node* slow = head;
+        Node* fast=head;
+        bool isCycle=false;
+
+        while(fast != NULL && fast->nextPtr != NULL){
+            slow=slow->nextPtr;
+            fast=fast->nextPtr->nextPtr;
+            if(slow == fast){
+                isCycle=true;
+                break;
+            };
+        };
+        if(!isCycle){
+            return NULL;
+        };
+        slow=head;
+        while (slow==fast){
+            slow=slow->nextPtr;
+            fast=fast->nextPtr;
+        }
+
+        return slow->nextPtr;
+
+    }
+
 };
 
 int main()
@@ -225,7 +270,7 @@ int main()
     // cout<<ll.search(2)<<endl;
     //  ll.deleteAlternateNodes();
     // ll.reverseLinkList();
-    ll.middelofList();
+    // ll.middelofList();
 
     // ll.printLL();
 
