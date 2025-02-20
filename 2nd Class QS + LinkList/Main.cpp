@@ -243,6 +243,21 @@ public:
 
     }
 
+    //  * DELETE ANY SPECIFIC VALUE ;
+
+    void deleteValue (int val){
+        Node* temp= head;
+
+        while(temp->nextPtr->data != val){
+           temp=temp->nextPtr;
+        }
+
+        Node* prev = temp->nextPtr;
+        temp->nextPtr=temp->nextPtr->nextPtr;
+        delete prev;
+    };
+
+
 };
 
 int main()
@@ -272,7 +287,9 @@ int main()
     // ll.reverseLinkList();
     // ll.middelofList();
 
-    // ll.printLL();
+    // ll.deleteValue(3);
+
+    ll.printLL();
 
     return 0;
 }
