@@ -44,6 +44,26 @@ class DoublyList{
             temp = temp->next;
         }
         cout<<"NULL\n";
+    };
+
+    // * Delete Specific Value
+
+    void deleteValue(int val){
+        Node* temp=head;
+        Node* deleteNode=NULL;
+
+        while(temp->next->data != val ){
+            temp=temp->next;
+        };
+
+
+        deleteNode = temp->next;
+
+        temp->next=temp->next->next;
+
+        deleteNode->next=NULL;
+        delete deleteNode;
+
     }
 
 };
@@ -57,6 +77,8 @@ int main (){
     dll.push_front(1);
     dll.push_front(2);
     dll.push_front(3);
+
+    dll.deleteValue(1);
 
     dll.print_dll();
 }
