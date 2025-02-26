@@ -277,7 +277,7 @@ int main()
     ll.push_back(4);
     ll.push_back(5);
     ll.push_back(6);
-    ll.pop_front();
+    // ll.pop_front();
 
     // ll.push_back_add_random_post(4,1);
     // ll.push_back_update(4,3);
