@@ -14,7 +14,7 @@ public class App {
 
         // PRINTED SORTED ARRAY ;
 
-        System.out.print("Sorted Array : ");
+        System.out.print("Sorted Array :: ");
         for (int num : arr) {
             System.out.print(num + " ");
         }
